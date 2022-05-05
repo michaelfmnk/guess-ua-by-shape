@@ -25,12 +25,9 @@ const randomQuestion = () => {
 }
 
 function App() {
+  const [questionNum, setQuestionNo] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
   const [firstTry, setFirstTry] = useState(true);
-  const [answered, setAnswered] = useState(false);
-  const [stats, setStats] = useState({
-    correct: 0,
-    questions: -1,
-  });
   const [question, setQuestion] = useState({})
   const [snack, setSnack] = useState({
     shown: false,
@@ -38,20 +35,12 @@ function App() {
   });
 
   useEffect(() => {
-    if (answered) {
-      // reset state
-      setAnswered(false);
-      setFirstTry(true);
-      return;
-    }
+    // reset state
+    setFirstTry(true);
 
-    setStats({
-      ...stats,
-      questions: stats.questions + 1,
-    })
     const question = randomQuestion();
     setQuestion(question);
-  }, [setQuestion, setStats, answered]);
+  }, [questionNum]);
 
   useEffect(() => {
     if (!question || !question.geojson) {
@@ -81,11 +70,8 @@ function App() {
     });
 
     if (correct) {
-      setAnswered(true);
-      setStats({
-        ...stats,
-        correct: stats.correct + (firstTry ? 1 : 0),
-      })
+      setQuestionNo(questionNum + 1);
+      setCorrectCount(correctCount + (firstTry ? 1 : 0))
     }
     setFirstTry(false);
   }
@@ -118,7 +104,7 @@ function App() {
         </ButtonGroup>
         <Divider style={{ marginBottom: 20 }} />
         <Typography variant='h6'>
-          Guessed: {stats.correct} / {stats.questions}
+          Guessed: {correctCount} / {questionNum}
         </Typography>
       </Card>
       <Snackbar open={snack.shown} autoHideDuration={1000} onClose={handleSnackClose}>
