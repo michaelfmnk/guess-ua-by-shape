@@ -25,7 +25,7 @@ const randomQuestion = () => {
 }
 
 function App() {
-  const [questionNum, setQuestionNo] = useState(0);
+  const [questionNum, setQuestionNum] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [firstTry, setFirstTry] = useState(true);
   const [question, setQuestion] = useState({})
@@ -70,7 +70,7 @@ function App() {
     });
 
     if (correct) {
-      setQuestionNo(questionNum + 1);
+      setQuestionNum(questionNum + 1);
       setCorrectCount(correctCount + (firstTry ? 1 : 0))
     }
     setFirstTry(false);
