@@ -1,4 +1,7 @@
-function Background({ src }) {
+import _ from 'lodash';
+
+const src = require(`./assets/bg${_.random(1, 6)}.jpg`)
+function Background() {
     return (
         <div style={{
             zIndex: -1,

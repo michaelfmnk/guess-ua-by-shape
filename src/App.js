@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { useEffect, useState } from 'react';
 import { ButtonGroup, Grid, Card, CardMedia, Button, Divider, Alert, Snackbar, Typography } from '@mui/material'
 import ukraine from './geojson/index.json';
-import Background from './Background';
+import RandomBackground from './Background';
 
 const randomQuestion = () => {
   const oblast = _.sample(ukraine.features);
@@ -26,15 +26,14 @@ const randomQuestion = () => {
 
 const pause = 1500;
 const imgSize = 300;
-const background = require(`./assets/bg${_.random(1, 7)}.jpg`)
 
 function App() {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = useState(0);
   const [questionsCount, setQuestionsCount] = useState(0);
-  
+
   const [question, setQuestion] = useState({})
-  
+
   const [buttonColors, setButtonColors] = useState({})
   const [snack, setSnack] = useState({
     shown: false,
@@ -97,7 +96,7 @@ function App() {
 
   return (
     <div>
-      <Background src={background} />
+      <RandomBackground />
       <Grid
         container
         spacing={0}
