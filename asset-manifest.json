@@ -1,22 +1,21 @@
 {
   "files": {
     "main.css": "/guess-ua-by-shape/static/css/main.01048130.css",
-    "main.js": "/guess-ua-by-shape/static/js/main.1322e0d7.js",
+    "main.js": "/guess-ua-by-shape/static/js/main.02c1d4cf.js",
     "static/js/787.ad34f66a.chunk.js": "/guess-ua-by-shape/static/js/787.ad34f66a.chunk.js",
-    "static/media/bg2.jpg": "/guess-ua-by-shape/static/media/bg2.caec35ee7690948f7a0c.jpg",
-    "static/media/bg4.jpg": "/guess-ua-by-shape/static/media/bg4.29107bacedca545c83f1.jpg",
-    "static/media/bg6.jpg": "/guess-ua-by-shape/static/media/bg6.d3a15ff2b5d154d38b2f.jpg",
-    "static/media/bg5.jpg": "/guess-ua-by-shape/static/media/bg5.4ea234dcf27b9c28fd1d.jpg",
-    "static/media/bg7.jpg": "/guess-ua-by-shape/static/media/bg7.96a872bff6c0132534ab.jpg",
-    "static/media/bg3.jpg": "/guess-ua-by-shape/static/media/bg3.d01cf91787fff5dfa3dd.jpg",
-    "static/media/bg1.jpg": "/guess-ua-by-shape/static/media/bg1.463d3b74a731e9b81e1e.jpg",
+    "static/media/bg2.jpg": "/guess-ua-by-shape/static/media/bg2.03d2b877af50c7ef5fdb.jpg",
+    "static/media/bg4.jpg": "/guess-ua-by-shape/static/media/bg4.bc8830fa32ebb0684c59.jpg",
+    "static/media/bg5.jpg": "/guess-ua-by-shape/static/media/bg5.fbf69a2ea95622f35fee.jpg",
+    "static/media/bg6.jpg": "/guess-ua-by-shape/static/media/bg6.3d4396c27d52b64d11e2.jpg",
+    "static/media/bg1.jpg": "/guess-ua-by-shape/static/media/bg1.823d96a31e519e06cb08.jpg",
+    "static/media/bg3.jpg": "/guess-ua-by-shape/static/media/bg3.4a03eb7cbf906d6579d1.jpg",
     "index.html": "/guess-ua-by-shape/index.html",
     "main.01048130.css.map": "/guess-ua-by-shape/static/css/main.01048130.css.map",
-    "main.1322e0d7.js.map": "/guess-ua-by-shape/static/js/main.1322e0d7.js.map",
+    "main.02c1d4cf.js.map": "/guess-ua-by-shape/static/js/main.02c1d4cf.js.map",
     "787.ad34f66a.chunk.js.map": "/guess-ua-by-shape/static/js/787.ad34f66a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.01048130.css",
-    "static/js/main.1322e0d7.js"
+    "static/js/main.02c1d4cf.js"
   ]
 }
