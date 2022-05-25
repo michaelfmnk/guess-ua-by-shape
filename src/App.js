@@ -24,22 +24,31 @@ const randomQuestion = () => {
   };
 }
 
+const pause = 1500;
+const imgSize = 300;
 const background = require(`./assets/bg${_.random(1, 7)}.jpg`)
+
 function App() {
-  const imgSize = 300;
-  const [questionsCount, setQuestionsCount] = useState(-1);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = useState(0);
+  const [questionsCount, setQuestionsCount] = useState(0);
+  
   const [question, setQuestion] = useState({})
+  
+  const [buttonColors, setButtonColors] = useState({})
   const [snack, setSnack] = useState({
     shown: false,
     correct: false
   });
 
+
   useEffect(() => {
-    const question = randomQuestion();
-    setQuestion(question);
-    setQuestionsCount(prev => prev + 1);
+    setTimeout(() => {
+      const question = randomQuestion();
+      setQuestion(question);
+      setButtonColors({});
+      setQuestionsCount(prev => prev + 1);
+    }, pause);
   }, [correctAnswers, incorrectAnswers]);
 
   useEffect(() => {
@@ -47,8 +56,8 @@ function App() {
       return;
     }
 
-    var projection = d3.geoMercator();
-    var path = d3.geoPath().projection(projection);
+    const projection = d3.geoMercator();
+    const path = d3.geoPath().projection(projection);
     projection.fitSize([imgSize, imgSize], question.geojson);
 
     const svg = d3.select('#subject');
@@ -64,7 +73,6 @@ function App() {
 
   const handleOptionClick = option => () => {
     const correct = option === question.answer;
-
     setSnack({
       shown: true,
       correct,
@@ -75,6 +83,11 @@ function App() {
     } else {
       setIncorrectAnswers(incorrectAnswers + 1);
     }
+
+    setButtonColors({
+      [option]: 'error',
+      [question.answer]: 'success'
+    })
   }
 
   const handleSnackClose = () => setSnack({
@@ -84,7 +97,7 @@ function App() {
 
   return (
     <div>
-      <Background src={background}/>
+      <Background src={background} />
       <Grid
         container
         spacing={0}
@@ -94,21 +107,24 @@ function App() {
         style={{ minHeight: '100vh' }}
       >
         <Grid item xs="auto">
-          <Card 
-           align="center"
-           style={{ padding: 20, borderRadius: 7 }} 
-           raised>
+          <Card
+            align="center"
+            style={{ padding: 20, borderRadius: 7 }}
+            raised>
             <CardMedia style={{ padding: '20px 0' }}>
               <svg id="subject" width={imgSize} height={imgSize} />
             </CardMedia>
             <Divider />
             <ButtonGroup
-              disabled={snack.shown}
               style={{ margin: '20px 0' }}
               orientation="vertical">
               {
                 question && question.options && question.options.map(option => (
-                  <Button key={option} onClick={handleOptionClick(option)}>
+                  <Button
+                    key={option}
+                    onClick={handleOptionClick(option)}
+                    color={buttonColors[option]}
+                  >
                     {option}
                   </Button>
                 ))
@@ -116,12 +132,12 @@ function App() {
             </ButtonGroup>
             <Divider style={{ marginBottom: 20 }} />
             <Typography variant='h6'>
-              Guessed: {`${correctAnswers}/${questionsCount}`}
+              Guessed: {`${correctAnswers}/${_.max([1, questionsCount])}`}
             </Typography>
           </Card>
         </Grid>
       </Grid>
-      <Snackbar open={snack.shown} autoHideDuration={1000} onClose={handleSnackClose}>
+      <Snackbar open={snack.shown} autoHideDuration={pause} onClose={handleSnackClose}>
         <Alert onClose={handleSnackClose} severity={snack.correct ? 'success' : 'error'} sx={{ width: '100%' }}>
           {snack.correct ? 'Correct!' : 'Wrong!'}
         </Alert>
