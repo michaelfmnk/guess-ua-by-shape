@@ -71,6 +71,10 @@ function App() {
   }, [question])
 
   const handleOptionClick = option => () => {
+    if (snack.shown) {
+      return;
+    }
+    
     const correct = option === question.answer;
     setSnack({
       shown: true,
