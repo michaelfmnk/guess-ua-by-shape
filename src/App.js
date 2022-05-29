@@ -131,7 +131,7 @@ function App() {
             </ButtonGroup>
             <Divider style={{ marginBottom: 20 }} />
             <Typography variant='h6'>
-              Guessed: {`${correctAnswers}/${_.max([1, questionsCount])}`}
+              Answered: {`${correctAnswers}/${_.max([1, questionsCount])}`}
             </Typography>
           </Card>
         </Grid>
